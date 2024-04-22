@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joc del 7 i mig</title>
+    <script src ="game.js" type="module"></script>
+
+</head>
+<body>
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <div class="contcartes">
+        <p>Punts del Jugador:
+            <span class="punts playerPoints">0</span>
+        </p>
+        <div class="cartes cartes2">
+            <!-- Cartes del jugador s'insereixen aquí per JavaScript -->
+        </div>
+    </div>
+    <div class="contcartes">
+        <p>Punts de l'Ordinador:
+            <span class="punts computerPoints">0</span>
+        </p>
+        <div class="cartes">
+            <!-- Cartes de l'ordinador s'insereixen aquí per JavaScript -->
+        </div>
+    </div>
+    <button id="hit">Treure Carta</button>
+    <button id="stay">Quedar-se</button>
+    <button id="startGameButton">Nou Joc</button>
+   
+</body>
+</html>
