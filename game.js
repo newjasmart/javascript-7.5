@@ -63,6 +63,7 @@ class Game {
 
     // Reparte una carta al computador
     dealOneCardToComputer() {
+        
         const cardToComputer = this.deck.pop();
         this.computerDeck.push(cardToComputer);
         this.updatePoints();
@@ -77,15 +78,24 @@ class Game {
     }
 
     hit() {
-        this.dealOneCardToPlayer();
-        const playerPoints = this.calculatePoints(this.playerDeck);
-        // const computerPoints = game.calculatePoints(game.computerDeck);
-        if (playerPoints > 7.5) {
+        if (this.calculatePoints(this.playerDeck) > 7.5) {
             Swal.fire({
                 icon: "error",
-                title: "Has Perdut",
-                text: "T\'has Passat del Set i Mig!",
+                title:"Has Perdut",
+                text:"t'has passat del Set i Mig"
             });
+            return;
+        }
+        this.dealOneCardToPlayer();
+        const playerPoints = this.calculatePoints(this.playerDeck);
+        if (playerPoints === 7.5) {
+            Swal.fire({
+                icon: "success",
+                title: "Felicitats",
+                text: "Has aconseguit Set i Mig!",
+            });
+            this.updatePoints();
+            return;
         }
         this.updatePoints();
     }
@@ -93,77 +103,53 @@ class Game {
 
     // butó Stay
     stay() {
-        // Ordinador demana cartes fins a arribar a 6 punts
-        while (this.calculatePoints(this.computerDeck) < 6) {
+        // Ordinador demana cartes fins a arribar a 7 punts
+        while (this.calculatePoints(this.computerDeck) < 5) {
             this.dealOneCardToComputer();
         }
 
         const dealerPoints = this.calculatePoints(this.computerDeck);
         const playerPoints = this.calculatePoints(this.playerDeck);
-        if (dealerPoints > 7.5 && playerPoints <= 7.5) {
+        if (dealerPoints > 7.5 ) {
             Swal.fire({
                 icon: 'success',
                 title: 'Has Guanyat',
                 text: 'El dealer s\'ha Passat del Set i Mig!',
-            })
-        } else if (playerPoints > 7.5 && dealerPoints <= 7.5) {
+            });
+        } else if (dealerPoints === playerPoints) {
             Swal.fire({
                 icon: 'error',
-                title: 'Has Perdut',
-                text: 'T\'has Passat del Set i Mig!',
+                title: 'empat',
+                text: 'Ha sortit un empat amb el dealer !',
             })
-        } else if (Math.abs(playerPoints - 7.5) < Math.abs(dealerPoints - 7.5)) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Has Guanyat',
-                text: 'Has Guanyat t\'has acostat mes al Set i Mig!',
-            })
-        } else if (Math.abs(playerPoints - 7.5) > Math.abs(dealerPoints - 7.5)) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Has Perdut',
-                text: 'El delaer s\'ha acostat mes al Set i Mig!',
-            })
-        } else if (playerPoints == 7.5) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Felicitats',
-                text: 'Has Guanyat',
-            })
-        } else if (computerPoints == 7.5) {
+        } else if (dealerPoints > playerPoints) {
             Swal.fire({
                 icon: 'error',
                 title: 'Has perdut',
-                text: 'El dealer ha Guanyat!',
+                text: 'El dealer ha guanyat!',
             })
-        } else if (computerPoints == playerPoints) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Has perdut',
-                text: 'Ha guanyat el Dealer!',
-            })
+        
         } else {
             Swal.fire({
-                icon: 'error',
-                title: 'Has perdut',
-                text: 'Ha guanyat el Dealer!',
+                icon: 'success',
+                title: 'Has guanyat',
+                text: 'Has guanyat contra el Dealer!',
             })
         }
-        game.updatePoints();
+        this.updatePoints();
     }
 }
 
 
-// Iniciar el joc
 const game = new Game(); // Crea una nova instància del joc 
 
 function updatePoints(playerPoints, dealerPoints) {
     const playerPointsElement = document.getElementById("player-points");
-    const dealerPointsElement = document.getElementById("dealer-points");
-  
-    document.getElementById.innerHTML = playerPoints;
-    document.getElementById.innerHTML = dealerPoints;
+    const dealerPointsPointsElement = document.getElementById("dealer-points")
+    playerPointsElement.innerHTML = playerPoints;
+    dealerPointsPointsElement.innerHTML = dealerPoints;
   }
+
 
 // Demanar carta
 document.getElementById("hit").addEventListener("click", () => {
@@ -175,59 +161,8 @@ document.getElementById("stay").addEventListener("click", () => {
     game.stay();
 });
 
-// Nova partida
-document.getElementById("startGameButton").addEventListener("click", startGameButton);
+//document.getElementById("startGameButton").addEventListener("click",()=>{
+    //game.dealOneCard
+//});
 
-function startGameButton() {
-    // reinicialitzar el joc
-    this.playerHand = [];
-    this.dealerHand = [];
-    this.playerScore = 0;
-    this.dealerScore = 0;
-    this.playerTurn = true;
-    this.gameOver = false;
-  
-    // Comenca una nova partida
-    game.dealInitialCards();
-  }
-
-
-const hitButton = document.getElementById("hit");
-const stayButton = document.getElementById("stay");
-hitButton.disabled = true;
-stayButton.disabled = true;
-
-
-function myfunction() {
-    var btn = document.getElementById('repetir');
-    btn.remove();
-    hitButton.disabled = false;
-    stayButton.disabled = false;
-}
-
-function funtiondisable() {
-    hitButton.disabled = true;
-    stayButton.disabled = true;
-}
-
-
-setTimeout(function () {
-    // Completar la operació de càrrega aquí
-    preloader.style.display = "none";
-}, 2000);
-
-
-setTimeout(function () {
-    // Completar la operació de càrrega aquí
-    preloader.style.display = "none";
-}, 2000);
-
-
-setTimeout(function () {
-    document.body.style.overflow = "hidden";
-}, 0);
-
-setTimeout(function () {
-    document.body.style.overflow = "auto";
-}, 6000);
-
+//<script src="https.//cdn.jsdelivr.net/npm/sweetalert2011"></script>

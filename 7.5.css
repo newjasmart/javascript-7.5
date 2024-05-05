@@ -1,45 +1,32 @@
-.ara-bank {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .ara-bank h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-  }
-  
-  .ara-bank p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: #666;
-  }
-  
-  .ara-bank ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0;
-  }
-  
-  .ara-bank li {
-    margin: 0 1rem;
-  }
-  
-  .ara-bank a {
-    display: block;
-    padding: 0.5rem 1rem;
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .ara-bank a:hover {
-    background-color: #444;
-  }
+body {
+  background-color: cadetblue;
+  background-position: center;
+  background-image: url(OIP.jpg);
+  background-size: cover;
+  text-align: center;
+  margin: 5px;
+  font-weight: bold;
+  font: size 2em;
+}
+
+
+.botones{
+  background-color: #00bbd0;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor:pointer;
+}
+
+#info {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 20px;
+}
+
+

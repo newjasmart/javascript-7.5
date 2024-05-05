@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joc del 7 i mig</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js"></script>
     <script src ="game.js" type="module"></script>
+    <link rel="stylesheet" href="7.5.css">
 
 </head>
 <body>
@@ -13,7 +15,8 @@
     </div>
     <div class="contcartes">
         <p>Punts del Jugador:
-            <span class="punts playerPoints">0</span>
+            <span id="player-points"
+            class="punts playerPoints">0</span>
         </p>
         <div class="cartes cartes2">
             <!-- Cartes del jugador s'insereixen aquí per JavaScript -->
@@ -21,7 +24,8 @@
     </div>
     <div class="contcartes">
         <p>Punts de l'Ordinador:
-            <span class="punts computerPoints">0</span>
+            <span id="dealer-points"
+            class="punts computerPoints">0</span>
         </p>
         <div class="cartes">
             <!-- Cartes de l'ordinador s'insereixen aquí per JavaScript -->
@@ -29,7 +33,5 @@
     </div>
     <button id="hit">Treure Carta</button>
     <button id="stay">Quedar-se</button>
-    <button id="startGameButton">Nou Joc</button>
-   
 </body>
 </html>

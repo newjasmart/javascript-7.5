@@ -10,4 +10,13 @@ export default class Card {
         }
         return this.value; // Sino retorna el seu valor numèric
     }
+
+
+    getHTML() {
+    return '<img src="./baralla/${this.value}_${this.suit}.jpg" />;';
+    }
+
+    toString() {
+    return '${this.value}_${this.suit}';
+    }
 }
