@@ -158,27 +158,39 @@ class Game {
 const game = new Game(); // Crea una nova instància del joc 
 
 function updatePoints(playerPoints, dealerPoints) {
-        const playerPointsElement = document.querySelector(".contcards2 p:last-child");
-        const dealerPointsElement = document.querySelector(".contcards p:last-child");
-
-    playerPointsElement.innerHTML = playerPoints;
-    dealerPointsElement.innerHTML = dealerPoints;
-}
+    const playerPointsElement = document.getElementById("player-points");
+    const dealerPointsElement = document.getElementById("dealer-points");
+  
+    document.getElementById.innerHTML = playerPoints;
+    document.getElementById.innerHTML = dealerPoints;
+  }
 
 // Demanar carta
-document.querySelector("#hit").addEventListener("click", () => {
+document.getElementById("hit").addEventListener("click", () => {
     game.hit();
 });
 
 // Plantar-se
-document.querySelector("#stay").addEventListener("click", () => {
+document.getElementById("stay").addEventListener("click", () => {
     game.stay();
 });
 
 // Nova partida
-document.getElementById("startGameButton").addEventListener("click", () => {
-    game.dealOneCard();
-});
+document.getElementById("startGameButton").addEventListener("click", startGameButton);
+
+function startGameButton() {
+    // reinicialitzar el joc
+    this.playerHand = [];
+    this.dealerHand = [];
+    this.playerScore = 0;
+    this.dealerScore = 0;
+    this.playerTurn = true;
+    this.gameOver = false;
+  
+    // Comenca una nova partida
+    game.dealInitialCards();
+  }
+
 
 const hitButton = document.getElementById("hit");
 const stayButton = document.getElementById("stay");
@@ -218,3 +230,4 @@ setTimeout(function () {
 setTimeout(function () {
     document.body.style.overflow = "auto";
 }, 6000);
+
